@@ -37,7 +37,6 @@ namespace UNAProject.Web
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
-        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
         .ConfigureWebHostDefaults(webBuilder =>
         {
             webBuilder
@@ -46,7 +45,6 @@ namespace UNAProject.Web
             {
                 logging.ClearProviders();
                 logging.AddConsole();
-                // logging.AddAzureWebAppDiagnostics(); add this if deploying to Azure
             });
         });
 

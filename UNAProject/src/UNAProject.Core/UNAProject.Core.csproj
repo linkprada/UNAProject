@@ -11,10 +11,16 @@
     <PackageReference Include="Ardalis.Specification" Version="5.1.0" />
     <PackageReference Include="Autofac" Version="6.2.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\UNAProject.SharedKernel\UNAProject.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ProjectAggregate\Events\" />
+    <Folder Include="ProjectAggregate\Handlers\" />
   </ItemGroup>
 
 </Project>

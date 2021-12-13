@@ -30,4 +30,12 @@
     </None>
   </ItemGroup>
 
+	<Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+		<ItemGroup>
+			<ReferencePath Condition="'%(FileName)' == 'Microsoft.Extensions.DependencyInjection.Abstractions'">
+				<Aliases>MSExtensionsDIAbstractionsAlias</Aliases>
+			</ReferencePath>
+		</ItemGroup>
+	</Target>
+
 </Project>

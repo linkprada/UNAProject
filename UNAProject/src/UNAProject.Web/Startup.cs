@@ -53,14 +53,10 @@ namespace UNAProject.Web
                 // optional - default path to view services is /listallservices - recommended to choose your own path
                 config.Path = "/listservices";
             });
-        }
 
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder.RegisterModule(new DefaultCoreModule());
-            builder.RegisterModule(new DefaultInfrastructureModule(_env.EnvironmentName == "Development"));
+            services.AddDefaultCoreDependencies();
+            services.AddDefaultInfrastructureDependencies(_env.EnvironmentName == "Development");
         }
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

@@ -1,7 +1,6 @@
 ﻿using Ardalis.GuardClauses;
 using System.Collections.Generic;
 using System.Linq;
-using UNAProject.Core.ProjectAggregate.Events;
 using UNAProject.SharedKernel;
 using UNAProject.SharedKernel.Interfaces;
 
@@ -24,9 +23,6 @@ namespace UNAProject.Core.ProjectAggregate
         {
             Guard.Against.Null(newItem, nameof(newItem));
             _items.Add(newItem);
-
-            var newItemAddedEvent = new NewItemAddedEvent(this, newItem);
-            Events.Add(newItemAddedEvent);
         }
 
         public void UpdateName(string newName)

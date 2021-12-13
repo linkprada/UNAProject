@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿// this line is here to resolve packages conflict
+extern alias MSExtensionsDIAbstractionsAlias;
+
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;

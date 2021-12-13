@@ -1,5 +1,4 @@
-﻿using UNAProject.Core.ProjectAggregate.Events;
-using UNAProject.SharedKernel;
+﻿using UNAProject.SharedKernel;
 
 namespace UNAProject.Core.ProjectAggregate
 {
@@ -12,8 +11,6 @@ namespace UNAProject.Core.ProjectAggregate
         public void MarkComplete()
         {
             IsDone = true;
-
-            Events.Add(new ToDoItemCompletedEvent(this));
         }
 
         public override string ToString()

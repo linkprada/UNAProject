@@ -61,7 +61,7 @@ namespace UNAProject.FunctionalTests
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder
-                .UseSolutionRelativeContentRoot("src/UNAProject.Web")
+                .UseSolutionRelativeContentRoot("UNAProject/src/UNAProject.Web")
                 .ConfigureServices(services =>
                 {
                     // Remove the app's ApplicationDbContext registration.
