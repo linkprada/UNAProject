@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿// <copyright file="SeedData.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Infrastructure.Data;
 
@@ -15,11 +19,13 @@ namespace UNAProject.Web
             Title = "Get Sample Working",
             Description = "Try to get the sample to build."
         };
+
         public static readonly ToDoItem ToDoItem2 = new ToDoItem
         {
             Title = "Review Solution",
             Description = "Review the different projects in the solution and how they relate to one another."
         };
+
         public static readonly ToDoItem ToDoItem3 = new ToDoItem
         {
             Title = "Run and Review Tests",
@@ -42,6 +48,7 @@ namespace UNAProject.Web
 
             }
         }
+
         public static void PopulateTestData(AppDbContext dbContext)
         {
             foreach (var item in dbContext.ToDoItems)

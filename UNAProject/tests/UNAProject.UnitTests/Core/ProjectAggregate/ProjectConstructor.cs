@@ -1,4 +1,8 @@
-﻿using UNAProject.Core.ProjectAggregate;
+﻿// <copyright file="ProjectConstructor.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using UNAProject.Core.ProjectAggregate;
 using Xunit;
 
 namespace UNAProject.UnitTests.Core.ProjectAggregate

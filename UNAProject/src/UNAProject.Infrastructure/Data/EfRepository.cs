@@ -1,4 +1,8 @@
-﻿using Ardalis.Specification.EntityFrameworkCore;
+﻿// <copyright file="EfRepository.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using Ardalis.Specification.EntityFrameworkCore;
 using UNAProject.SharedKernel.Interfaces;
 
 namespace UNAProject.Infrastructure.Data

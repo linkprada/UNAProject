@@ -1,4 +1,9 @@
-﻿using Ardalis.ListStartupServices;
+﻿// <copyright file="Startup.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
+using Ardalis.ListStartupServices;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,7 +11,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using System.Collections.Generic;
 using UNAProject.Core;
 using UNAProject.Infrastructure;
 

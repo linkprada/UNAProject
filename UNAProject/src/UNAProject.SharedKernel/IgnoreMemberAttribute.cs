@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="IgnoreMemberAttribute.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System;
 
 namespace UNAProject.SharedKernel
 {

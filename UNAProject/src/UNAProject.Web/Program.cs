@@ -1,9 +1,13 @@
-﻿using Autofac.Extensions.DependencyInjection;
+﻿// <copyright file="Program.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
 using UNAProject.Infrastructure.Data;
 
 namespace UNAProject.Web
@@ -21,7 +25,8 @@ namespace UNAProject.Web
                 try
                 {
                     var context = services.GetRequiredService<AppDbContext>();
-                    //                    context.Database.Migrate();
+
+                    // context.Database.Migrate();
                     context.Database.EnsureCreated();
                     SeedData.Initialize(services);
                 }
@@ -47,6 +52,5 @@ namespace UNAProject.Web
                 logging.AddConsole();
             });
         });
-
     }
 }

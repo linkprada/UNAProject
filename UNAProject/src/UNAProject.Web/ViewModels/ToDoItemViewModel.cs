@@ -1,12 +1,19 @@
-﻿using UNAProject.Core.ProjectAggregate;
+﻿// <copyright file="ToDoItemViewModel.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using UNAProject.Core.ProjectAggregate;
 
 namespace UNAProject.Web.ViewModels
 {
     public class ToDoItemViewModel
     {
         public int Id { get; set; }
+
         public string Title { get; set; }
+
         public string Description { get; set; }
+
         public bool IsDone { get; private set; }
 
         public static ToDoItemViewModel FromToDoItem(ToDoItem item)

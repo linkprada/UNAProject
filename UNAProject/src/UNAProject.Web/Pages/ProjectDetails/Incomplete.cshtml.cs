@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿// <copyright file="Incomplete.cshtml.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Core.ProjectAggregate.Specifications;
 using UNAProject.SharedKernel.Interfaces;

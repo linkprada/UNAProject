@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// <copyright file="BaseEntity.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
 
 namespace UNAProject.SharedKernel
 {

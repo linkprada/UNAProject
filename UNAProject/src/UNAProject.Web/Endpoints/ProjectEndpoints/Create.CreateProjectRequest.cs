@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// <copyright file="Create.CreateProjectRequest.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System.ComponentModel.DataAnnotations;
 
 namespace UNAProject.Web.Endpoints.ProjectEndpoints
 {

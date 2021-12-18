@@ -1,9 +1,13 @@
-﻿using Ardalis.ApiEndpoints;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿// <copyright file="List.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Ardalis.ApiEndpoints;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.SharedKernel.Interfaces;
 

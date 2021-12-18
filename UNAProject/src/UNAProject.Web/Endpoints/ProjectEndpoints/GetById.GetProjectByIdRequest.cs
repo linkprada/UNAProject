@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// <copyright file="GetById.GetProjectByIdRequest.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace UNAProject.Web.Endpoints.ProjectEndpoints
 {
     public class GetProjectByIdRequest
     {
         public const string Route = "/Projects/{ProjectId:int}";
+
         public static string BuildRoute(int projectId) => Route.Replace("{ProjectId:int}", projectId.ToString());
 
         public int ProjectId { get; set; }

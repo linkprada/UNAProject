@@ -1,4 +1,8 @@
-﻿using System.Net.Http;
+﻿// <copyright file="MetaControllerInfo.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System.Net.Http;
 using System.Threading.Tasks;
 using UNAProject.Web;
 using Xunit;

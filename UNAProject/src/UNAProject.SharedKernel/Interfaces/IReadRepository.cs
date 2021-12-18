@@ -1,4 +1,8 @@
-﻿using Ardalis.Specification;
+﻿// <copyright file="IReadRepository.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using Ardalis.Specification;
 
 namespace UNAProject.SharedKernel.Interfaces
 {

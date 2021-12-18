@@ -1,9 +1,13 @@
-﻿using Ardalis.EFCore.Extensions;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿// <copyright file="AppDbContext.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Ardalis.EFCore.Extensions;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.SharedKernel;
 
@@ -24,6 +28,7 @@ namespace UNAProject.Infrastructure.Data
         }
 
         public DbSet<ToDoItem> ToDoItems { get; set; }
+
         public DbSet<Project> Projects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

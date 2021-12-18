@@ -1,4 +1,7 @@
-﻿// this line is here to resolve packages conflict
+﻿// <copyright file="BaseEfRepoTestFixture.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 extern alias MSExtensionsDIAbstractionsAlias;
 
 using MediatR;

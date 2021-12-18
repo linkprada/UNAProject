@@ -1,11 +1,15 @@
-﻿using Ardalis.ApiEndpoints;
-using Ardalis.Result.AspNetCore;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿// <copyright file="ListIncomplete.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Ardalis.ApiEndpoints;
+using Ardalis.Result.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using UNAProject.Core.Interfaces;
 
 namespace UNAProject.Web.Endpoints.ProjectEndpoints

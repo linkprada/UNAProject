@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// <copyright file="ProjectsController.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Core.ProjectAggregate.Specifications;
 using UNAProject.SharedKernel.Interfaces;

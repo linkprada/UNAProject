@@ -1,6 +1,10 @@
-﻿using Ardalis.GuardClauses;
+﻿// <copyright file="Project.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Collections.Generic;
 using System.Linq;
+using Ardalis.GuardClauses;
 using UNAProject.SharedKernel;
 using UNAProject.SharedKernel.Interfaces;
 
@@ -11,7 +15,9 @@ namespace UNAProject.Core.ProjectAggregate
         public string Name { get; private set; }
 
         private List<ToDoItem> _items = new List<ToDoItem>();
+
         public IEnumerable<ToDoItem> Items => _items.AsReadOnly();
+
         public ProjectStatus Status => _items.All(i => i.IsDone) ? ProjectStatus.Complete : ProjectStatus.InProgress;
 
         public Project(string name)

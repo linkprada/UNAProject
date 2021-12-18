@@ -1,9 +1,13 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
+﻿// <copyright file="ToDoItemSearchService.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ardalis.GuardClauses;
+using Ardalis.Result;
 using UNAProject.Core.Interfaces;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Core.ProjectAggregate.Specifications;

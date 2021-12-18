@@ -1,6 +1,10 @@
-﻿using MediatR;
+﻿// <copyright file="NoOpMediator.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace UNAProject.UnitTests
 {

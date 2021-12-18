@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="Project_AddItem.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System;
 using UNAProject.Core.ProjectAggregate;
 using Xunit;
 

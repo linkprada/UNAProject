@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// <copyright file="MetaController.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 
 namespace UNAProject.Web.Api
 {

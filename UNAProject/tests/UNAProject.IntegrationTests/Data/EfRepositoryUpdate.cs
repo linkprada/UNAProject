@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// <copyright file="EfRepositoryUpdate.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.UnitTests;
 using Xunit;

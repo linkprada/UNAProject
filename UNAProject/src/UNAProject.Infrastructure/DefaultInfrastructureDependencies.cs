@@ -1,11 +1,15 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿// <copyright file="DefaultInfrastructureDependencies.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using UNAProject.Core.Interfaces;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Infrastructure.Data;
@@ -61,12 +65,12 @@ namespace UNAProject.Infrastructure
 
         private static void RegisterProductionOnlyDependencies(IServiceCollection services)
         {
-            
+
         }
 
         private static void RegisterDevelopmentOnlyDependencies(IServiceCollection services)
         {
-            
+
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// <copyright file="ProjectDTO.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
 
 namespace UNAProject.Web.ApiModels
 {
@@ -6,6 +10,7 @@ namespace UNAProject.Web.ApiModels
     public class ProjectDTO : CreateProjectDTO
     {
         public int Id { get; set; }
+
         public List<ToDoItemDTO> Items = new();
     }
 

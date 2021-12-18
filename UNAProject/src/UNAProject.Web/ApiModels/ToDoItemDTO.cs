@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// <copyright file="ToDoItemDTO.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System.ComponentModel.DataAnnotations;
 using UNAProject.Core.ProjectAggregate;
 
 namespace UNAProject.Web.ApiModels
@@ -7,9 +11,12 @@ namespace UNAProject.Web.ApiModels
     public class ToDoItemDTO
     {
         public int Id { get; set; }
+
         [Required]
         public string Title { get; set; }
+
         public string Description { get; set; }
+
         public bool IsDone { get; private set; }
 
         public static ToDoItemDTO FromToDoItem(ToDoItem item)

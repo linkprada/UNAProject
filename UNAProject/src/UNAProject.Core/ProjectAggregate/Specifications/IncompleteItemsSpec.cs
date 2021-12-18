@@ -1,4 +1,8 @@
-﻿using Ardalis.Specification;
+﻿// <copyright file="IncompleteItemsSpec.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using Ardalis.Specification;
 
 namespace UNAProject.Core.ProjectAggregate.Specifications
 {

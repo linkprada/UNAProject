@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿// <copyright file="Index.cshtml.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Core.ProjectAggregate.Specifications;
 using UNAProject.SharedKernel.Interfaces;
@@ -15,6 +19,7 @@ namespace UNAProject.Web.Pages.ToDoRazorPage
 
         [BindProperty(SupportsGet = true)]
         public int ProjectId { get; set; }
+
         public string Message { get; set; } = "";
 
         public ProjectDTO Project { get; set; }

@@ -1,4 +1,7 @@
-﻿
+﻿// <copyright file="IAggregateRoot.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
 namespace UNAProject.SharedKernel.Interfaces
 {
     // Apply this marker interface only to aggregate root entities

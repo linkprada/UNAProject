@@ -1,4 +1,8 @@
-﻿using UNAProject.Core.ProjectAggregate;
+﻿// <copyright file="ToDoItemBuilder.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using UNAProject.Core.ProjectAggregate;
 
 namespace UNAProject.UnitTests
 {
