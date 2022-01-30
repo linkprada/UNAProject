@@ -2,12 +2,10 @@
 // Copyright (c) linkprada. All rights reserved.
 // </copyright>
 
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using UNAProject.Core.ProjectAggregate;
-using UNAProject.UnitTests;
+using UNAProject.Core.Entities.PublicationAggregate;
 using Xunit;
 
 namespace UNAProject.IntegrationTests.Data
@@ -15,36 +13,33 @@ namespace UNAProject.IntegrationTests.Data
     public class EfRepositoryUpdate : BaseEfRepoTestFixture
     {
         [Fact]
-        public async Task UpdatesItemAfterAddingIt()
+        public async Task Update_ExistingPublicationField_ChangesItsValueAsync()
         {
-            // add a project
-            var repository = GetRepository();
-            var initialName = Guid.NewGuid().ToString();
-            var project = new Project(initialName);
+            var title = "testUpdatePublication";
+            var publication = new Publication(title, PublicationType.Simple);
+            var repository = GetRepository<Publication>();
 
-            await repository.AddAsync(project);
+            await repository.AddAsync(publication);
 
             // detach the item so we get a different instance
-            _dbContext.Entry(project).State = EntityState.Detached;
+            _dbContext.Entry(publication).State = EntityState.Detached;
 
-            // fetch the item and update its title
-            var newProject = (await repository.ListAsync())
-                .FirstOrDefault(project => project.Name == initialName);
-            Assert.NotNull(newProject);
-            Assert.NotSame(project, newProject);
-            var newName = Guid.NewGuid().ToString();
-            newProject.UpdateName(newName);
+            var publicationAddeed = (await repository.ListAsync())
+                .FirstOrDefault(publication => publication.Title == title);
+            Assert.NotNull(publicationAddeed);
+            Assert.NotSame(publication, publicationAddeed);
 
-            // Update the item
-            await repository.UpdateAsync(newProject);
+            var updatedTitle = "testUpdatedModifiedPublication";
+            publicationAddeed.UpdateTitle(updatedTitle);
 
-            // Fetch the updated item
-            var updatedItem = (await repository.ListAsync())
-                .FirstOrDefault(project => project.Name == newName);
+            await repository.UpdateAsync(publicationAddeed);
 
-            Assert.NotNull(updatedItem);
-            Assert.NotEqual(project.Name, updatedItem.Name);
-            Assert.Equal(newProject.Id, updatedItem.Id);
+            var publicationUpdated = (await repository.ListAsync())
+                .FirstOrDefault(publication => publication.Title == updatedTitle);
+
+            Assert.NotNull(publicationUpdated);
+            Assert.NotEqual(publication.Title, publicationAddeed.Title);
+            Assert.Equal(publicationAddeed.Id, publicationUpdated.Id);
         }
     }
 }

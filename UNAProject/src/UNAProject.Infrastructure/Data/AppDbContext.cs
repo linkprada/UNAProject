@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Ardalis.EFCore.Extensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using UNAProject.Core.Entities.AppUserAggregate;
+using UNAProject.Core.Entities.PublicationAggregate;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.SharedKernel;
 
@@ -30,6 +32,12 @@ namespace UNAProject.Infrastructure.Data
         public DbSet<ToDoItem> ToDoItems { get; set; }
 
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<AppUser> AppUsers { get; set; }
+
+        public DbSet<Attachment> Attachments { get; set; }
+
+        public DbSet<Publication> Publications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

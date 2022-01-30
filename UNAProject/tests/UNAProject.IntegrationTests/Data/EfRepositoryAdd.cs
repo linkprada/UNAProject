@@ -2,9 +2,10 @@
 // Copyright (c) linkprada. All rights reserved.
 // </copyright>
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using UNAProject.Core.ProjectAggregate;
+using UNAProject.Core.Entities.PublicationAggregate;
 using Xunit;
 
 namespace UNAProject.IntegrationTests.Data
@@ -12,19 +13,18 @@ namespace UNAProject.IntegrationTests.Data
     public class EfRepositoryAdd : BaseEfRepoTestFixture
     {
         [Fact]
-        public async Task AddsProjectAndSetsId()
+        public async Task Add_NewPublication_SetsId()
         {
-            var testProjectName = "testProject";
-            var repository = GetRepository();
-            var project = new Project(testProjectName);
+            var publicationTitle = "testAddPublication";
+            var publication = new Publication(publicationTitle, PublicationType.Simple);
+            var repository = GetRepository<Publication>();
 
-            await repository.AddAsync(project);
+            await repository.AddAsync(publication);
 
-            var newProject = (await repository.ListAsync())
-                            .FirstOrDefault();
+            var publicationAddeed = (await repository.ListAsync()).FirstOrDefault();
 
-            Assert.Equal(testProjectName, newProject.Name);
-            Assert.True(newProject?.Id > 0);
+            Assert.Equal(publicationTitle, publicationAddeed?.Title);
+            Assert.True(publicationAddeed?.Id > 0);
         }
     }
 }

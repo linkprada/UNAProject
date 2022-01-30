@@ -2,9 +2,8 @@
 // Copyright (c) linkprada. All rights reserved.
 // </copyright>
 
-using System;
 using System.Threading.Tasks;
-using UNAProject.Core.ProjectAggregate;
+using UNAProject.Core.Entities.PublicationAggregate;
 using Xunit;
 
 namespace UNAProject.IntegrationTests.Data
@@ -12,20 +11,19 @@ namespace UNAProject.IntegrationTests.Data
     public class EfRepositoryDelete : BaseEfRepoTestFixture
     {
         [Fact]
-        public async Task DeletesItemAfterAddingIt()
+        public async Task Delete_ExistingPublication_RemovesItFromDBAsync()
         {
-            // add a project
-            var repository = GetRepository();
-            var initialName = Guid.NewGuid().ToString();
-            var project = new Project(initialName);
-            await repository.AddAsync(project);
+            var publicationTitle = "testDeletePublication";
+            var publication = new Publication(publicationTitle, PublicationType.Simple);
+            var repository = GetRepository<Publication>();
 
-            // delete the item
-            await repository.DeleteAsync(project);
+            await repository.AddAsync(publication);
 
-            // verify it's no longer there
-            Assert.DoesNotContain(await repository.ListAsync(),
-                project => project.Name == initialName);
+            await repository.DeleteAsync(publication);
+
+            Assert.DoesNotContain(
+                await repository.ListAsync(),
+                publication => publication.Title == publicationTitle);
         }
     }
 }

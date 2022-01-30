@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using UNAProject.Core.ProjectAggregate;
 using UNAProject.Infrastructure.Data;
+using UNAProject.SharedKernel.Interfaces;
 
 namespace UNAProject.IntegrationTests.Data
 {
@@ -28,19 +29,20 @@ namespace UNAProject.IntegrationTests.Data
             // Create a new options instance telling the context to use an
             // InMemory database and the new service provider.
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            builder.UseInMemoryDatabase("cleanarchitecture")
+            builder.UseInMemoryDatabase("unaproject")
                    .UseInternalServiceProvider(serviceProvider);
 
             return builder.Options;
         }
 
-        protected EfRepository<Project> GetRepository()
+        protected EfRepository<T> GetRepository<T>()
+            where T : class, IAggregateRoot
         {
             var options = CreateNewContextOptions();
             var mockMediator = new Mock<IMediator>();
 
             _dbContext = new AppDbContext(options, mockMediator.Object);
-            return new EfRepository<Project>(_dbContext);
+            return new EfRepository<T>(_dbContext);
         }
     }
 }
