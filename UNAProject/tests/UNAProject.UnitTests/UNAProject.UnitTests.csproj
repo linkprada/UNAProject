@@ -40,7 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Builders\" />
     <Folder Include="Core\Handlers\" />
     <Folder Include="Core\Services\" />
   </ItemGroup>
