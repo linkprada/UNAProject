@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UNAProject\src\UNAProject.Core\UNAProject.Core.csproj" />
+    <ProjectReference Include="..\UNAProject\src\UNAProject.Infrastructure\UNAProject.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
