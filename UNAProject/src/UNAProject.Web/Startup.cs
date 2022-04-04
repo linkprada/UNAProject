@@ -45,7 +45,8 @@ namespace UNAProject.Web
                     .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.AddControllersWithViews().AddNewtonsoftJson();
-            services.AddRazorPages();
+            services.AddRazorPages()
+                    .AddRazorRuntimeCompilation();
 
             services.AddSwaggerGen(c =>
             {
