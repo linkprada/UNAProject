@@ -4,7 +4,6 @@
 
 using System.Collections.Generic;
 using Ardalis.ListStartupServices;
-using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using UNAProject.Core;
 using UNAProject.Infrastructure;
+using UNAProject.Infrastructure.Identity;
 
 namespace UNAProject.Web
 {
@@ -36,9 +36,13 @@ namespace UNAProject.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            string connectionString = Configuration.GetConnectionString("SqliteConnection");  //Configuration.GetConnectionString("DefaultConnection");
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext(connectionString);
+            services.AddIdentityDbContext(connectionString);
+
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages();
