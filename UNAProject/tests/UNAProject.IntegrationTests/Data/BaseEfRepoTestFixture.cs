@@ -8,7 +8,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using UNAProject.Core.ProjectAggregate;
 using UNAProject.Infrastructure.Data;
 using UNAProject.SharedKernel.Interfaces;
 

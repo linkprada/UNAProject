@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using UNAProject.Core.Interfaces;
-using UNAProject.Core.Services;
 
 namespace UNAProject.Core
 {
@@ -17,7 +16,6 @@ namespace UNAProject.Core
     {
         public static void AddDefaultCoreDependencies(this IServiceCollection services)
         {
-            services.AddScoped<IToDoItemSearchService, ToDoItemSearchService>();
         }
     }
 }

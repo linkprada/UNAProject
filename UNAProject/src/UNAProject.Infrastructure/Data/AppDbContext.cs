@@ -10,7 +10,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using UNAProject.Core.Entities.AppUserAggregate;
 using UNAProject.Core.Entities.PublicationAggregate;
-using UNAProject.Core.ProjectAggregate;
 using UNAProject.SharedKernel;
 
 namespace UNAProject.Infrastructure.Data
@@ -28,10 +27,6 @@ namespace UNAProject.Infrastructure.Data
         {
             _mediator = mediator;
         }
-
-        public DbSet<ToDoItem> ToDoItems { get; set; }
-
-        public DbSet<Project> Projects { get; set; }
 
         public DbSet<AppUser> AppUsers { get; set; }
 
