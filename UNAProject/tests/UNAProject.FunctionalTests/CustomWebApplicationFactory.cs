@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using UNAProject.Infrastructure.Data;
+using UNAProject.Infrastructure.Identity;
 using UNAProject.UnitTests;
 using UNAProject.Web;
 
@@ -49,12 +51,17 @@ namespace UNAProject.FunctionalTests
                 try
                 {
                     // Seed the database with test data.
-                    SeedData.PopulateTestData(db);
+                    AppDbContextSeed.PopulateTestData(db);
+
+                    // seed sample user data
+                    var userManager = scopedServices.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = scopedServices.GetRequiredService<RoleManager<IdentityRole>>();
+                    AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError(ex, "An error occurred seeding the " +
-                                        $"database with test messages. Error: {ex.Message}");
+                    logger.LogError(ex, $"An error occurred seeding the " +
+                                        "database with test messages. Error: {ex.Message}");
                 }
             }
 
