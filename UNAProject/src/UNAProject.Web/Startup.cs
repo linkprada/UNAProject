@@ -7,6 +7,7 @@ using Ardalis.ListStartupServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -41,7 +42,7 @@ namespace UNAProject.Web
             services.AddDbContext(connectionString);
             services.AddIdentityDbContext(connectionString);
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.AddControllersWithViews().AddNewtonsoftJson();
