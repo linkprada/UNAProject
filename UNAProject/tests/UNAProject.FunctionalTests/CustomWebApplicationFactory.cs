@@ -71,31 +71,51 @@ namespace UNAProject.FunctionalTests
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
+            builder.UseEnvironment("Testing");
+
             builder
                 .UseSolutionRelativeContentRoot("UNAProject/src/UNAProject.Web")
                 .ConfigureServices(services =>
                 {
-                    // Remove the app's ApplicationDbContext registration.
-                    var descriptor = services.SingleOrDefault(
-                        d => d.ServiceType ==
-                            typeof(DbContextOptions<AppDbContext>));
+                    RemoveExistingDbContextImplementaions(services);
 
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
+                    services.AddEntityFrameworkInMemoryDatabase();
 
-                    // This should be set for each individual test run
-                    string inMemoryCollectionName = Guid.NewGuid().ToString();
+                    // Create a new service provider.
+                    var provider = services.BuildServiceProvider();
 
-                    // Add ApplicationDbContext using an in-memory database for testing.
+                    // Add a database context (ApplicationDbContext) using an in-memory 
+                    // database for testing.
                     services.AddDbContext<AppDbContext>(options =>
                     {
-                        options.UseInMemoryDatabase(inMemoryCollectionName);
+                        options.UseInMemoryDatabase("InMemoryDbForTesting");
+                        options.UseInternalServiceProvider(provider);
+                    });
+
+                    services.AddDbContext<AppIdentityDbContext>(options =>
+                    {
+                        options.UseInMemoryDatabase("Identity");
+                        options.UseInternalServiceProvider(provider);
                     });
 
                     services.AddScoped<IMediator, NoOpMediator>();
                 });
+        }
+
+        private static void RemoveExistingDbContextImplementaions(IServiceCollection services)
+        {
+            var descriptors = services.Where(d =>
+                                                d.ServiceType == typeof(DbContextOptions<AppDbContext>) ||
+                                                d.ServiceType == typeof(DbContextOptions<AppIdentityDbContext>))
+                                            .ToList();
+
+            if (descriptors.Count > 0)
+            {
+                foreach (var descriptor in descriptors)
+                {
+                    services.Remove(descriptor);
+                }
+            }
         }
     }
 }
