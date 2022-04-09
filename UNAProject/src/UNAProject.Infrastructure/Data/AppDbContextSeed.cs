@@ -1,16 +1,12 @@
-﻿// <copyright file="SeedData.cs" company="linkprada">
-// Copyright (c) linkprada. All rights reserved.
-// </copyright>
-
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using UNAProject.Infrastructure.Data;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace UNAProject.Web
+namespace UNAProject.Infrastructure.Data
 {
-    public static class SeedData
+    public static class AppDbContextSeed
     {
         //public static readonly Project TestProject1 = new Project("Test Project");
         //public static readonly ToDoItem ToDoItem1 = new ToDoItem

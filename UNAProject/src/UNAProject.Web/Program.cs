@@ -3,17 +3,20 @@
 // </copyright>
 
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using UNAProject.Infrastructure.Data;
+using UNAProject.Infrastructure.Identity;
 
 namespace UNAProject.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
 
@@ -27,7 +30,14 @@ namespace UNAProject.Web
 
                     // context.Database.Migrate();
                     context.Database.EnsureCreated();
-                    SeedData.Initialize(services);
+                    AppDbContextSeed.Initialize(services);
+
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    identityContext.Database.EnsureCreated();
+
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
                 }
                 catch (Exception ex)
                 {
