@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using UNAProject.Core.Entities.AppUserAggregate;
+using UNAProject.Core.Entities.MemberAggregate;
 using UNAProject.Core.Interfaces;
 using UNAProject.Infrastructure.Data;
 using UNAProject.SharedKernel.Interfaces;
@@ -41,7 +41,7 @@ namespace UNAProject.Infrastructure
         {
             var assemblies = new List<Assembly>();
 
-            var coreAssembly = Assembly.GetAssembly(typeof(AppUser)); // TODO: Replace "Project" with any type from your Core project
+            var coreAssembly = Assembly.GetAssembly(typeof(Member)); // TODO: Replace "Project" with any type from your Core project
             var infrastructureAssembly = Assembly.GetAssembly(typeof(StartupSetup));
             assemblies.Add(coreAssembly);
             assemblies.Add(infrastructureAssembly);
