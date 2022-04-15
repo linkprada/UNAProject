@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Ardalis.EFCore.Extensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using UNAProject.Core.Entities.AppUserAggregate;
+using UNAProject.Core.Entities.MemberAggregate;
 using UNAProject.Core.Entities.PublicationAggregate;
 using UNAProject.SharedKernel;
 
@@ -28,7 +28,7 @@ namespace UNAProject.Infrastructure.Data
             _mediator = mediator;
         }
 
-        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Member> AppUsers { get; set; }
 
         public DbSet<Attachment> Attachments { get; set; }
 
