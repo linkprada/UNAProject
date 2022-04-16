@@ -13,7 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using UNAProject.Core.Entities.MemberAggregate;
 using UNAProject.Infrastructure.Identity;
+using UNAProject.SharedKernel.Interfaces;
 
 namespace UNAProject.Web.Areas.Identity.Pages.Account
 {
@@ -24,17 +26,20 @@ namespace UNAProject.Web.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IRepository<Member> _memberRepository;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IRepository<Member> memberRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _memberRepository = memberRepository;
         }
 
         [BindProperty]
@@ -80,6 +85,10 @@ namespace UNAProject.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    // create domain user (Member entity) and link to identity with a field (UserName as UserId)
+                    await _memberRepository.AddAsync(new Member(user.UserName));
+                    await _memberRepository.SaveChangesAsync();
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

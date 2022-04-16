@@ -43,7 +43,9 @@ namespace UNAProject.Web
             services.AddIdentityDbContext(connectionString);
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<AppIdentityDbContext>();
+                    .AddEntityFrameworkStores<AppIdentityDbContext>()
+                    .AddDefaultTokenProviders()
+                    .AddDefaultUI();
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages()
