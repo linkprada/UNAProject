@@ -5,3 +5,8 @@
 }
 
 <h1>UNAProject HomePage</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>You're logged In</h2>
+}
