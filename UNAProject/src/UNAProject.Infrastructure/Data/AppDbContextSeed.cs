@@ -1,63 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// <copyright file="AppDbContextSeed.cs" company="linkprada">
+// Copyright (c) linkprada. All rights reserved.
+// </copyright>
+
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using UNAProject.Core.Entities.PublicationAggregate;
 
 namespace UNAProject.Infrastructure.Data
 {
     public static class AppDbContextSeed
     {
-        //public static readonly Project TestProject1 = new Project("Test Project");
-        //public static readonly ToDoItem ToDoItem1 = new ToDoItem
-        //{
-        //    Title = "Get Sample Working",
-        //    Description = "Try to get the sample to build."
-        //};
+        public static readonly Publication Publication1 = new Publication("PublicationTest1", PublicationType.Simple)
+        {
+            Description = "A very long description1 for testing purpose",
+        };
 
-        //public static readonly ToDoItem ToDoItem2 = new ToDoItem
-        //{
-        //    Title = "Review Solution",
-        //    Description = "Review the different projects in the solution and how they relate to one another."
-        //};
+        public static readonly Publication Publication2 = new Publication("PublicationTest2", PublicationType.Simple)
+        {
+            Description = "A very long description2 for testing purpose",
+        };
 
-        //public static readonly ToDoItem ToDoItem3 = new ToDoItem
-        //{
-        //    Title = "Run and Review Tests",
-        //    Description = "Make sure all the tests run and review what they are doing."
-        //};
+        public static readonly Publication Publication3 = new Publication("PublicationTest3", PublicationType.Simple)
+        {
+            Description = "A very long description3 for testing purpose",
+        };
 
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            //using (var dbContext = new AppDbContext(
-            //    serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
-            //{
-            //    // Look for any TODO items.
-            //    if (dbContext.ToDoItems.Any())
-            //    {
-            //        return;   // DB has been seeded
-            //    }
+            using (var dbContext = new AppDbContext(
+                serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
+            {
+                // Look for any TODO items.
+                if (dbContext.Publications.Any())
+                {
+                    return;   // DB has been seeded
+                }
 
-            //    PopulateTestData(dbContext);
-
-
-            //}
+                PopulateTestData(dbContext);
+            }
         }
 
         public static void PopulateTestData(AppDbContext dbContext)
         {
-            //foreach (var item in dbContext.ToDoItems)
-            //{
-            //    dbContext.Remove(item);
-            //}
-            //dbContext.SaveChanges();
+            foreach (var item in dbContext.Publications)
+            {
+                dbContext.Remove(item);
+            }
 
-            //TestProject1.AddItem(ToDoItem1);
-            //TestProject1.AddItem(ToDoItem2);
-            //TestProject1.AddItem(ToDoItem3);
-            //dbContext.Projects.Add(TestProject1);
+            dbContext.SaveChanges();
 
-            //dbContext.SaveChanges();
+            dbContext.Publications.AddRange(Publication1, Publication2, Publication3);
+            dbContext.SaveChanges();
         }
     }
 }

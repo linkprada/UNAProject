@@ -12,15 +12,10 @@ namespace UNAProject.UnitTests.Core.Entities.PublicationAggregate
     {
         private readonly string _publicationTitle = "testPublication";
 
-        public Publication CreateNewPublication()
-        {
-            return new Publication(_publicationTitle, PublicationType.JobOffre);
-        }
-
         [Fact]
         public void Instantiate_Publication()
         {
-            var publication = CreateNewPublication();
+            var publication = new Publication(_publicationTitle, PublicationType.JobOffre);
             Assert.Equal(_publicationTitle, publication.Title);
             Assert.Equal(PublicationType.JobOffre, publication.Type);
         }
