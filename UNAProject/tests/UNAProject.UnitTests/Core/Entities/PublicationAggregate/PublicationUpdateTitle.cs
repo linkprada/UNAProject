@@ -16,7 +16,7 @@ namespace UNAProject.UnitTests.Core.Entities.PublicationAggregate
         [InlineData(" ")]
         public void UpdateTitle_PublicationWithTitleWhiteSpaceOrNull_ThrowException(string inputPublicationTitle)
         {
-            var publication = new Publication("testPublication", PublicationType.UNAEvent);
+            var publication = new Publication("testPublication", PublicationType.Event);
 
             Action action = () => publication.UpdateTitle(inputPublicationTitle);
 

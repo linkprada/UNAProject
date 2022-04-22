@@ -28,7 +28,7 @@ namespace UNAProject.Infrastructure.Data
             _mediator = mediator;
         }
 
-        public DbSet<Member> AppUsers { get; set; }
+        public DbSet<Member> Members { get; set; }
 
         public DbSet<Attachment> Attachments { get; set; }
 

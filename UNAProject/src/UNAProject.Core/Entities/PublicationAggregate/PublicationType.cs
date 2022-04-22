@@ -10,6 +10,6 @@ namespace UNAProject.Core.Entities.PublicationAggregate
     {
         Simple,
         JobOffre,
-        UNAEvent,
+        Event,
     }
 }
