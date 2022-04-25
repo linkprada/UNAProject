@@ -66,6 +66,8 @@ namespace UNAProject.Web
                 config.Path = "/listservices";
             });
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddDefaultCoreDependencies();
             services.AddDefaultInfrastructureDependencies(_env.EnvironmentName == "Development");
         }
