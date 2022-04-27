@@ -1,0 +1,22 @@
+﻿@page
+@model UNAProject.Web.Pages.Publications.IndexModel
+@{
+    Layout = "~/Pages/Shared/_LayoutWithSocialLinks.cshtml";
+    ViewData["title"] = "Publications";
+}
+
+<div class="row gap-3">
+    @foreach (var publication in Model.Publications)
+    {
+        <div class="col-12">
+            <div class="card">
+                <img src="~/testing.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">@publication.Title</h5>
+                    <p class="card-text">@publication.Description</p>
+                    <a asp-page="Publication" asp-route-id="@publication.Id" class="btn btn-primary">View More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
