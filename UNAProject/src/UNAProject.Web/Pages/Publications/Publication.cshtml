@@ -1,0 +1,32 @@
+﻿@page "/Publications/{id:int}"
+@model UNAProject.Web.Pages.Publications.PublicationModel
+@{
+    Layout = "~/Pages/Shared/_LayoutWithSocialLinks.cshtml";
+    ViewData["title"] = Model.Publication.Title;
+}
+
+@section Styles{
+<link href="~/pages/publications/publication.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <h1>@Model.Publication.Title</h1>
+</div>
+<div class="row">
+    <div id="publicationImagesCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/testing.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/testing.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p>@Model.Publication.Description</p>
+</div>
