@@ -15,18 +15,22 @@
               asp-fallback-test-class="visually-hidden" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    @await RenderSectionAsync("Styles", required: false).ConfigureAwait(false)
+
 </head>
 <body>
 
     <partial name="NavBar" />
     
-    <div class="container body-content">
+    <main class="container body-content">
         @RenderBody()
+    </main>
+
+    <footer class="container">
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Today.Year - UNAProject.Web</p>
-        </footer>
-    </div>
+        <p>&copy; @DateTime.Today.Year - UNAProject.Web</p>
+    </footer>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery-3.6.0.js"></script>
@@ -45,6 +49,7 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-@await RenderSectionAsync("scripts", required: false).ConfigureAwait(false)
+    @await RenderSectionAsync("Scripts", required: false).ConfigureAwait(false)
+
 </body>
 </html>
