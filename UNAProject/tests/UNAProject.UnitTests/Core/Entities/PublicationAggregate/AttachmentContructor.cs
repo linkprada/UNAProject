@@ -13,20 +13,20 @@ namespace UNAProject.UnitTests.Core.Entities.PublicationAggregate
         [Fact]
         public void Instantiate_Attachment()
         {
-            var attachmentFileName = "testFileName";
-            var attachment = new Attachment(attachmentFileName, AttachmentType.Image);
+            var attachmentName = "testAttachmentName";
+            var attachment = new Attachment(attachmentName, AttachmentType.Image);
 
-            Assert.Equal(attachmentFileName, attachment.FileName);
-            Assert.Equal(AttachmentType.Image, attachment.FileType);
+            Assert.Equal(attachmentName, attachment.Name);
+            Assert.Equal(AttachmentType.Image, attachment.Type);
         }
 
         [Theory]
         [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
-        public void Instantiate_AttachmentWithFileNameWhiteSpaceOrNull_ThrowException(string inputAttachmentFileName)
+        public void Instantiate_AttachmentWithNameWhiteSpaceOrNull_ThrowException(string inputAttachmentName)
         {
-            Action action = () => new Attachment(inputAttachmentFileName, AttachmentType.Image);
+            Action action = () => new Attachment(inputAttachmentName, AttachmentType.Image);
 
             Assert.ThrowsAny<ArgumentException>(action);
         }

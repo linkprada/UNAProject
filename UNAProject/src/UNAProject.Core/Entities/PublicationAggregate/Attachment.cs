@@ -9,21 +9,19 @@ namespace UNAProject.Core.Entities.PublicationAggregate
 {
     public class Attachment : BaseEntity
     {
-        public Attachment(string fileName, AttachmentType fileType)
+        public Attachment(string name, AttachmentType type)
         {
-            FileName = Guard.Against.NullOrWhiteSpace(fileName, nameof(fileName));
-            FileType = fileType;
+            Name = Guard.Against.NullOrWhiteSpace(name, nameof(name));
+            Type = type;
         }
 
-        public string FileName { get; set; }
+        public string Name { get; set; }
 
-        public AttachmentType FileType { get; set; }
+        public AttachmentType Type { get; set; }
 
-        public string StoragePath { get; set; }
-
-        public void UpdateFileName(string fileName)
+        public void UpdateName(string name)
         {
-            FileName = Guard.Against.NullOrWhiteSpace(fileName, nameof(fileName));
+            Name = Guard.Against.NullOrWhiteSpace(name, nameof(name));
         }
     }
 }
