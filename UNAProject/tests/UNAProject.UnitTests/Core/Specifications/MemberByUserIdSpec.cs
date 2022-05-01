@@ -18,9 +18,7 @@ namespace UNAProject.UnitTests.Core.Specifications
             var loggedInUsername = "user2";
             var specification = new MemberByUserIdSpecification(loggedInUsername);
 
-            var memberFound = GetMembersListTest()
-                                    .Where(specification.WhereExpressions.First().Compile())
-                                    .SingleOrDefault();
+            var memberFound = specification.Evaluate(GetMembersListTest()).SingleOrDefault();
 
             Assert.Equal(loggedInUsername, memberFound.UserId);
         }
