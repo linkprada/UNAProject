@@ -4,6 +4,7 @@
 
 using AutoMapper;
 using UNAProject.Core.Entities.PublicationAggregate;
+using UNAProject.Web.Mappings.ValueResolvers;
 using UNAProject.Web.Models;
 
 namespace UNAProject.Web.Mappings
@@ -16,7 +17,10 @@ namespace UNAProject.Web.Mappings
             CreateMap<PublicationDTO, Publication>();
 
             // Entity to DTO
-            CreateMap<Publication, PublicationDTO>();
+            CreateMap<Publication, PublicationDTO>()
+                .ForMember(
+                    dest => dest.ImagesUri,
+                    opt => opt.MapFrom<ImagesPathValueResolver>());
         }
     }
 }

@@ -2,6 +2,7 @@
 // Copyright (c) linkprada. All rights reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using UNAProject.Core.Entities.PublicationAggregate;
 
@@ -15,8 +16,8 @@ namespace UNAProject.Web.Models
 
         public string Description { get; set; }
 
-        public PublicationType PublicationType { get; set; }
+        public List<Uri> ImagesUri { get; set; }
 
-        public List<Attachment> Attachments { get; set; }
+        public List<Uri> FilesUri { get; set; }
     }
 }
