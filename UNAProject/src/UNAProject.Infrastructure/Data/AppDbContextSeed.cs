@@ -27,12 +27,16 @@ namespace UNAProject.Infrastructure.Data
             Description = "A very long description3 for testing purpose",
         };
 
+        public static readonly Attachment Attachment1 = new Attachment("test1.jpg", AttachmentType.Image);
+        public static readonly Attachment Attachment2 = new Attachment("test2.jpg", AttachmentType.Image);
+        public static readonly Attachment Attachment3 = new Attachment("test3.jpg", AttachmentType.Image);
+
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var dbContext = new AppDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
             {
-                // Look for any TODO items.
+                // Look for any Publications items.
                 if (dbContext.Publications.Any())
                 {
                     return;   // DB has been seeded
@@ -50,6 +54,10 @@ namespace UNAProject.Infrastructure.Data
             }
 
             dbContext.SaveChanges();
+
+            Publication1.AddAttachments(Attachment1);
+            Publication1.AddAttachments(Attachment2);
+            Publication1.AddAttachments(Attachment3);
 
             dbContext.Publications.AddRange(Publication1, Publication2, Publication3);
             dbContext.SaveChanges();
