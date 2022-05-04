@@ -22,6 +22,8 @@ namespace UNAProject.Core.Entities.PublicationAggregate
 
         public string Title { get; private set; }
 
+        public string LeadImageName { get; set; }
+
         public PublicationType Type { get; private set; }
 
         public string Description { get; set; }

@@ -20,7 +20,10 @@ namespace UNAProject.Web.Mappings
             CreateMap<Publication, PublicationDTO>()
                 .ForMember(
                     dest => dest.ImagesUri,
-                    opt => opt.MapFrom<ImagesPathValueResolver>());
+                    opt => opt.MapFrom<ImageUriValueResolver>())
+                .ForMember(
+                    dest => dest.LeadImageName,
+                    opt => opt.MapFrom<ImageUriValueResolver>());
         }
     }
 }
