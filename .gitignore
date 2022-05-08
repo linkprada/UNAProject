@@ -362,4 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /TODO.txt
-/UNAProject/src/UNAProject.Web/appsettings.developement.json
+/UNAProject/src/UNAProject.Web/appsettings.development.json

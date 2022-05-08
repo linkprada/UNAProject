@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@section Styles {
+  @RenderSection("Styles", required: false)
+}
+
+<div class="row gap-5 gap-lg-0">
+    <div class="col-lg-7">
+        @RenderBody()
+    </div>
+    <div class="col-lg-5">
+        <div class="card social-sidenav">
+            <div class="card-body">
+                <h5 class="card-title">Social Contact</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+  @RenderSection("Scripts", required: false)
+}

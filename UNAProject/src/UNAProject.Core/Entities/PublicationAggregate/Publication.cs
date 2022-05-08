@@ -12,23 +12,25 @@ namespace UNAProject.Core.Entities.PublicationAggregate
 {
     public class Publication : BaseEntity, IAggregateRoot
     {
+        private readonly List<Attachment> _attachments = new List<Attachment>();
+
         public Publication(string title, PublicationType type)
         {
             Title = Guard.Against.NullOrWhiteSpace(title, nameof(title));
             Type = type;
-
-            Attachments = new List<Attachment>();
         }
 
         public string Title { get; private set; }
 
-        public PublicationType Type { get; set; }
+        public string LeadImageName { get; set; }
+
+        public PublicationType Type { get; private set; }
 
         public string Description { get; set; }
 
         public DateTime CreationDate { get; set; }
 
-        public List<Attachment> Attachments { get; set; }
+        public IEnumerable<Attachment> Attachments => _attachments.AsReadOnly();
 
         public void UpdateTitle(string newTitle)
         {
@@ -37,7 +39,7 @@ namespace UNAProject.Core.Entities.PublicationAggregate
 
         public void AddAttachments(Attachment attachment)
         {
-            Attachments.Add(attachment);
+            _attachments.Add(attachment);
         }
     }
 }

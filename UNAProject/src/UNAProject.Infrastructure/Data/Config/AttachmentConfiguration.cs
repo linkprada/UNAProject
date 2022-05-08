@@ -12,10 +12,10 @@ namespace UNAProject.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Attachment> builder)
         {
-            builder.Property(a => a.FileName)
+            builder.Property(a => a.Name)
                 .IsRequired();
 
-            builder.Property(a => a.FileType)
+            builder.Property(a => a.Type)
                 .IsRequired();
         }
     }

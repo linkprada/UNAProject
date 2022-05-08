@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using UNAProject.Core;
 using UNAProject.Infrastructure;
 using UNAProject.Infrastructure.Identity;
+using UNAProject.Web.Configurations;
 
 namespace UNAProject.Web
 {
@@ -65,6 +66,10 @@ namespace UNAProject.Web
                 // optional - default path to view services is /listallservices - recommended to choose your own path
                 config.Path = "/listservices";
             });
+
+            services.Configure<StorageConfiguration>(Configuration.GetSection(StorageConfiguration.Storage));
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddDefaultCoreDependencies();
             services.AddDefaultInfrastructureDependencies(_env.EnvironmentName == "Development");
