@@ -27,7 +27,7 @@ namespace UNAProject.FunctionalTests
         {
             var regex = new Regex(regexpression);
             var match = regex.Match(input);
-            return match.Groups.Values.LastOrDefault().Value;
+            return match.Groups.Values.LastOrDefault()?.Value;
         }
     }
 }
