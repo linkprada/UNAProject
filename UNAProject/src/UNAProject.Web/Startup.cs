@@ -15,6 +15,8 @@ using UNAProject.Core;
 using UNAProject.Infrastructure;
 using UNAProject.Infrastructure.Identity;
 using UNAProject.Web.Configurations;
+using UNAProject.Web.Interfaces;
+using UNAProject.Web.Services;
 
 namespace UNAProject.Web
 {
@@ -70,6 +72,8 @@ namespace UNAProject.Web
             services.Configure<StorageConfiguration>(Configuration.GetSection(StorageConfiguration.Storage));
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddScoped<IPaginationService, PaginationService>();
 
             services.AddDefaultCoreDependencies();
             services.AddDefaultInfrastructureDependencies(_env.EnvironmentName == "Development");

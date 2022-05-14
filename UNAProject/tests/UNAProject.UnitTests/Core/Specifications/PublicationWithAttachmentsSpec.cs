@@ -11,17 +11,18 @@ namespace UNAProject.UnitTests.Core.Specifications
 {
     public class PublicationWithAttachmentsSpec
     {
+        private readonly int _publicationIdTest = 42;
+
         [Fact]
         public void PublicationWithAttachmentsSpec_GetPublicationWithItsAttchments()
         {
-            var publicationId = 42;
-            var specification = new PublicationWithAttachmentsSpecification(publicationId);
+            var specification = new PublicationWithAttachmentsSpecification(_publicationIdTest);
 
             // TODO: INVESTIGATE the list is returned with child lists even if you remove "include" clause in the specification
             var publicationWithAttachments = specification.Evaluate(GetPublicationsListTest()).SingleOrDefault();
 
             Assert.NotNull(publicationWithAttachments);
-            Assert.Equal(publicationId, publicationWithAttachments.Id);
+            Assert.Equal(_publicationIdTest, publicationWithAttachments.Id);
             Assert.Equal(2, publicationWithAttachments.Attachments.Count());
         }
 
@@ -33,7 +34,7 @@ namespace UNAProject.UnitTests.Core.Specifications
             publication1.AddAttachments(new Attachment("Attachment2Test", AttachmentType.File));
 
             var publication2 = new Publication("PublicationTest2", PublicationType.Event);
-            publication2.Id = 42;
+            publication2.Id = _publicationIdTest;
             publication2.AddAttachments(new Attachment("Attachment3Test", AttachmentType.Image));
             publication2.AddAttachments(new Attachment("Attachment4Test", AttachmentType.File));
 
