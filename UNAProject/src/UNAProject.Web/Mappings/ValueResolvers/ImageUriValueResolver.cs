@@ -8,7 +8,7 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.Extensions.Options;
 using UNAProject.Core.Entities.PublicationAggregate;
-using UNAProject.Web.Configurations;
+using UNAProject.Infrastructure.Configurations;
 using UNAProject.Web.Models;
 
 namespace UNAProject.Web.Mappings.ValueResolvers

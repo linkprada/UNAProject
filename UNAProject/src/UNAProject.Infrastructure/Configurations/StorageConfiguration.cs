@@ -2,11 +2,11 @@
 // Copyright (c) linkprada. All rights reserved.
 // </copyright>
 
-namespace UNAProject.Web.Configurations
+namespace UNAProject.Infrastructure.Configurations
 {
     public class StorageConfiguration
     {
-        public const string Storage = "StorageConfiguration";
+        public const string StorageConfig = "StorageConfiguration";
 
         public string ImagesPath { get; set; }
 

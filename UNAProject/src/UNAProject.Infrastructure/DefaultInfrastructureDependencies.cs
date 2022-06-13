@@ -2,16 +2,14 @@
 // Copyright (c) linkprada. All rights reserved.
 // </copyright>
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UNAProject.Core.Entities.MemberAggregate;
 using UNAProject.Core.Interfaces;
+using UNAProject.Infrastructure.Configurations;
 using UNAProject.Infrastructure.Data;
 using UNAProject.SharedKernel.Interfaces;
 
@@ -21,6 +19,7 @@ namespace UNAProject.Infrastructure
     {
         public static void AddDefaultInfrastructureDependencies(
             this IServiceCollection services,
+            IConfiguration configuration,
             bool isDevelopment,
             Assembly callingAssembly = null)
         {
@@ -34,6 +33,10 @@ namespace UNAProject.Infrastructure
             {
                 RegisterProductionOnlyDependencies(services);
             }
+
+            services.Configure<StorageConfiguration>(configuration.GetSection(StorageConfiguration.StorageConfig));
+            services.Configure<EmailConfiguration>(configuration.GetSection(EmailConfiguration.EmailConfig));
+
             RegisterCommonDependencies(services, assemblies);
         }
 
