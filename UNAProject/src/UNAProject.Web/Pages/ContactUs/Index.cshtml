@@ -1,6 +1,34 @@
 ﻿@page
 @model UNAProject.Web.Pages.ContactUs.IndexModel
 @{
+    Layout = "~/Pages/Shared/_LayoutWithSocialLinks.cshtml";
+    ViewData["title"] = "Contact Us";
 }
 
 <h2>Contact Us Page</h2>
+
+<form method="post">
+    <div class="col-12 mb-3">
+        <label asp-for="@Model.ContactUsDTO.Name" class="form-label"></label>
+        <input asp-for="@Model.ContactUsDTO.Name" class="form-control">
+        <span asp-validation-for="@Model.ContactUsDTO.Name" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-3">
+        <label asp-for="@Model.ContactUsDTO.Email" class="form-label"></label>
+        <input asp-for="@Model.ContactUsDTO.Email" class="form-control">
+        <span asp-validation-for="@Model.ContactUsDTO.Email" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-3">
+        <label asp-for="@Model.ContactUsDTO.Subject" class="form-label"></label>
+        <textarea asp-for="@Model.ContactUsDTO.Subject" class="form-control" rows="1"></textarea>
+        <span asp-validation-for="@Model.ContactUsDTO.Subject" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-3">
+        <label asp-for="@Model.ContactUsDTO.Message" class="form-label"></label>
+        <textarea asp-for="@Model.ContactUsDTO.Message" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="@Model.ContactUsDTO.Message" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-3 d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>

@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using Ardalis.ListStartupServices;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,6 @@ using Microsoft.OpenApi.Models;
 using UNAProject.Core;
 using UNAProject.Infrastructure;
 using UNAProject.Infrastructure.Identity;
-using UNAProject.Web.Configurations;
 using UNAProject.Web.Interfaces;
 using UNAProject.Web.Services;
 
@@ -52,6 +52,7 @@ namespace UNAProject.Web
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages()
+                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>())
                     .AddRazorRuntimeCompilation();
 
             services.AddSwaggerGen(c =>
@@ -69,14 +70,12 @@ namespace UNAProject.Web
                 config.Path = "/listservices";
             });
 
-            services.Configure<StorageConfiguration>(Configuration.GetSection(StorageConfiguration.Storage));
-
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<IPaginationService, PaginationService>();
 
             services.AddDefaultCoreDependencies();
-            services.AddDefaultInfrastructureDependencies(_env.EnvironmentName == "Development");
+            services.AddDefaultInfrastructureDependencies(Configuration, _env.EnvironmentName == "Development");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
