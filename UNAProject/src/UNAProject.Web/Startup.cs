@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using Ardalis.ListStartupServices;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -51,6 +52,7 @@ namespace UNAProject.Web
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages()
+                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>())
                     .AddRazorRuntimeCompilation();
 
             services.AddSwaggerGen(c =>
